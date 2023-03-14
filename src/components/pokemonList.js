@@ -4,11 +4,12 @@ import PokemonCard from "./PokemonCard";
 
 function pokemonList(props) {
   //console.log(props);
-  const { pokemonData } = props;
+  const { pokemonData, loadPokemons, isNext } = props;
   //(pokemonData);
 
   const loadMore = () => {
     console.log("Cargando mas pokemons...");
+    loadPokemons();
   };
   return (
     <FlatList
@@ -18,14 +19,16 @@ function pokemonList(props) {
       keyExtractor={(pokemon) => String(pokemon.id)}
       renderItem={({ item }) => <PokemonCard pokemon={item} />}
       contentContainerStyle={styles.flatListContentContainer}
-      onEndReached={loadMore}
+      onEndReached={isNext && loadMore}
       onEndReachedThreshold={0.1}
       ListFooterComponent={
-        <ActivityIndicator
-          size="large"
-          style={styles.spinner}
-          color="#AEAEAE"
-        />
+        isNext && (
+          <ActivityIndicator
+            size="large"
+            style={styles.spinner}
+            color="#AEAEAE"
+          />
+        )
       }
     />
   );

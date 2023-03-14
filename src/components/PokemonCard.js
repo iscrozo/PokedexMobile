@@ -12,7 +12,7 @@ import { capitalize } from "lodash";
 export default function PokemonCard(props) {
   const { pokemon } = props;
 
-  console.log(pokemon);
+  //console.log(pokemon);
   const pokemonColor = getColorByPokemonType(pokemon.type);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStylesPokemon };
 
