@@ -1,12 +1,18 @@
 import React from "react";
-import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  Platform,
+} from "react-native";
 import PokemonCard from "./PokemonCard";
 
 function pokemonList(props) {
   //console.log(props);
   const { pokemonData, loadPokemons, isNext } = props;
   //(pokemonData);
-
+  // -> imprime desde que OS esta
+  //console.log(Platform.OS);
   const loadMore = () => {
     console.log("Cargando mas pokemons...");
     loadPokemons();
@@ -39,6 +45,7 @@ export default pokemonList;
 const styles = StyleSheet.create({
   flatListContentContainer: {
     paddingHorizontal: 5,
+    marginTop: Platform.OS === "android" ? 30 : 0,
   },
   spinner: {
     marginTop: 20,
