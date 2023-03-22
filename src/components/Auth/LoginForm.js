@@ -14,6 +14,7 @@ export default function LoginForm() {
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
+    //validateOnChange: false , // para realizar la validacion con el boton
     onSubmit: (formValue) => {
       console.log("Formulario enviado...");
       console.log(formValue);
