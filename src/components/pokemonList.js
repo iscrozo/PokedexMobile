@@ -14,7 +14,7 @@ function pokemonList(props) {
   // -> imprime desde que OS esta
   //console.log(Platform.OS);
   const loadMore = () => {
-    console.log("Cargando mas pokemons...");
+    //rconsole.log("Cargando mas pokemons...");
     loadPokemons();
   };
   return (
