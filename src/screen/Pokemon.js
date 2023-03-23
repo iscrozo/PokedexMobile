@@ -5,6 +5,8 @@ import Header from "../components/Pokemon/Header";
 import TypePokemon from "../components/Pokemon/Type";
 import StatsPokemon from "../components/Pokemon/Stats";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import Favorite from "../components/Pokemon/Favorite";
+import useAuth from "../hooks/useAuth";
 
 function Pokemon(props) {
   const {
@@ -13,12 +15,11 @@ function Pokemon(props) {
   } = props;
 
   const [pokemon, setPokemon] = useState(null);
+  const { auth } = useAuth();
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => (
-        <Icon name="love" color="#fff" size={20} style={{ marginRight: 20 }} />
-      ),
+      headerRight: () => auth && <Favorite id={pokemon?.id} />,
 
       headerLeft: () => (
         <Icon
@@ -31,7 +32,7 @@ function Pokemon(props) {
       ),
     });
     //console.log(response);
-  }, [navigation, params]);
+  }, [navigation, params, pokemon]);
 
   useEffect(() => {
     (async () => {
