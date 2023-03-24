@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function Favorite(props) {
   const { id } = props;
+
   const addFavorites = async () => {
     await addPokemonFavoriteApi(id);
     console.log("Añadir a favoritos ", id);

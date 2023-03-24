@@ -2,20 +2,20 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { FAVORITE_STORAGE } from "../utils/constants";
 import { includes, pull } from "lodash";
 
-export async function addPokemonFavoriteApi(id) {
+export async function getPokemonsFavoriteApi() {
   try {
-    const favorites = [];
-    favorites.push(id);
-    await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites));
+    const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
+    return JSON.parse(response || []);
   } catch (error) {
     throw error;
   }
 }
 
-export async function getPokemonsFavoriteApi() {
+export async function addPokemonFavoriteApi(id) {
   try {
-    const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
-    return response;
+    const favorites = await getPokemonsFavoriteApi();
+    favorites.push(id);
+    await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites));
   } catch (error) {
     throw error;
   }
