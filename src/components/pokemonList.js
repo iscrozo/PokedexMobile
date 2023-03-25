@@ -8,7 +8,7 @@ import {
 import PokemonCard from "./PokemonCard";
 
 function pokemonList(props) {
-  //console.log(props);
+  console.log(props);
   const { pokemonData, loadPokemons, isNext } = props;
   //(pokemonData);
   // -> imprime desde que OS esta
